@@ -8,8 +8,10 @@ import FullscreenIcon from '../../Icons/FullscreenIcon'
 import { elementToFullscreen } from '../../../utils/element-fullscreen'
 import Input from '../../Input'
 import { useState } from 'react'
+import DownloadIcon from '../../Icons/DownloadIcon'
+import { downloadFile } from '../../../utils/file-downloader'
 const Header: React.FC = () => {
-  const [fileName, setFileName] = useState('untitled')
+  const [fileName, setFileName] = useState('untitled.js')
   const copyHandler = () => {
     toast.success('Copied to clipboard!')
   }
@@ -23,6 +25,13 @@ const Header: React.FC = () => {
     if (!isFullscreen) {
       toast.error('Fullscreen is not supported!')
     }
+  }
+  const downloadHandler = () => {
+    const isDownladed = downloadFile(fileName, 'Hello World!')
+    if (!isDownladed) {
+      toast.error('Download is not supported!')
+    }
+    toast.success(`${fileName} is downloaded!`)
   }
   return (
     <StyledWrapper>
@@ -42,6 +51,9 @@ const Header: React.FC = () => {
         </IconButton>
         <IconButton btnType='PRIMARY' onClick={copyHandler}>
           <CopyIcon />
+        </IconButton>
+        <IconButton btnType='SECONDARY' onClick={downloadHandler}>
+          <DownloadIcon />
         </IconButton>
         <IconButton btnType='PRIMARY' onClick={fullscreenHandler}>
           <FullscreenIcon />

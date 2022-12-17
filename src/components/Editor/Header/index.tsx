@@ -1,6 +1,6 @@
-import { HeaderWrapper } from './styles'
+import { StyledWrapper } from './styles'
 
 const Header: React.FC = () => {
-  return <HeaderWrapper></HeaderWrapper>
+  return <StyledWrapper></StyledWrapper>
 }
 export default Header

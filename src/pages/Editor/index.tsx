@@ -1,14 +1,14 @@
 import EditorContainer from '../../containers/Editor'
 import { StyledWrapper } from './styles'
-
-const Editor: React.FC = () => {
+import Editor from '../../components/Editor'
+const EditorPage: React.FC = () => {
   return (
     <EditorContainer>
       <StyledWrapper>
-        <h1>Editor</h1>
+        <Editor />
       </StyledWrapper>
     </EditorContainer>
   )
 }
 
-export default Editor
+export default EditorPage

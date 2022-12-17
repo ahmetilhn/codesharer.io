@@ -6,6 +6,7 @@ import { StyledProvider } from './styles'
 import { editorStore } from '../../../store'
 const CodeEditor: React.FC = () => {
   const code = editorStore((state) => state.code)
+  const setCode = editorStore((state) => state.setCode)
   return (
     <StyledProvider>
       <CodeMirror
@@ -14,7 +15,7 @@ const CodeEditor: React.FC = () => {
         height='100%'
         theme={dracula}
         extensions={[javascript({ jsx: true })]}
-        onChange={(e) => console.log(e)}
+        onChange={(e) => setCode(e)}
       />
     </StyledProvider>
   )

@@ -7,11 +7,12 @@ import { toast } from 'react-hot-toast'
 import FullscreenIcon from '../../Icons/FullscreenIcon'
 import { elementToFullscreen } from '../../../utils/element-fullscreen'
 import Input from '../../Input'
-import { useState } from 'react'
 import DownloadIcon from '../../Icons/DownloadIcon'
 import { downloadFile } from '../../../utils/file-downloader'
+import { editorStore } from '../../../store'
 const Header: React.FC = () => {
-  const [fileName, setFileName] = useState('untitled.js')
+  const fileName = editorStore((state) => state.fileName)
+  const setFileName = editorStore((state) => state.setFileName)
   const copyHandler = () => {
     toast.success('Copied to clipboard!')
   }

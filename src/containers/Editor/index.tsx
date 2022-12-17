@@ -1,11 +1,10 @@
+import React from 'react'
 import { StyledContainer } from './styles'
-
-const EditorContainer: React.FC = () => {
-  return (
-    <StyledContainer>
-      <h1>Editor</h1>
-    </StyledContainer>
-  )
+type Props = {
+  children: React.ReactNode
+}
+const EditorContainer: React.FC<React.PropsWithChildren<Props>> = ({ children }) => {
+  return <StyledContainer>{children}</StyledContainer>
 }
 
 export default EditorContainer

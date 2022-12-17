@@ -1,10 +1,13 @@
-import { StyledHome } from './styles'
+import EditorContainer from '../../containers/Editor'
+import { StyledWrapper } from './styles'
 
 const Editor: React.FC = () => {
   return (
-    <StyledHome>
-      <h1>Editor</h1>
-    </StyledHome>
+    <EditorContainer>
+      <StyledWrapper>
+        <h1>Editor</h1>
+      </StyledWrapper>
+    </EditorContainer>
   )
 }
 

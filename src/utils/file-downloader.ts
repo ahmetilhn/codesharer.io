@@ -5,7 +5,7 @@ export const downloadFile = (fileName: string, content: string): boolean => {
     if (!isFileSaverSupported) {
       return false
     }
-    const blob = new Blob([JSON.stringify(content)], { type: 'text/plain;charset=utf-8' })
+    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' })
     saveAs(blob, fileName)
     return true
   } catch (e) {

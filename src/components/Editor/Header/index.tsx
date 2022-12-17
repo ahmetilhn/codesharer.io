@@ -13,6 +13,7 @@ import { editorStore } from '../../../store'
 const Header: React.FC = () => {
   const fileName = editorStore((state) => state.fileName)
   const setFileName = editorStore((state) => state.setFileName)
+  const code = editorStore((state) => state.code)
   const copyHandler = () => {
     toast.success('Copied to clipboard!')
   }
@@ -28,8 +29,8 @@ const Header: React.FC = () => {
     }
   }
   const downloadHandler = () => {
-    const isDownladed = downloadFile(fileName, 'Hello World!')
-    if (!isDownladed) {
+    const isDownloaded = downloadFile(fileName, code)
+    if (!isDownloaded) {
       toast.error('Download is not supported!')
     }
     toast.success(`${fileName} is downloaded!`)

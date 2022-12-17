@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { colors, heights } from '../../constants/theme'
+import { devices } from '../../constants/media-queries'
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -14,6 +15,10 @@ const StyledWrapper = styled.div`
     path {
       fill: ${colors.GREEN};
     }
+  }
+  @media ${devices.TABLET} {
+    height: ${heights.BTN_MOBILE};
+    width: ${heights.BTN_MOBILE};
   }
 `
 const Logo = () => {

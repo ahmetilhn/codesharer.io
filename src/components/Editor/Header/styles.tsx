@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { colors } from '../../../constants/theme'
-
+import { devices } from '../../../constants/media-queries'
 export const StyledWrapper = styled.header`
   width: 100%;
   display: flex;
@@ -14,7 +14,13 @@ export const StyledWrapper = styled.header`
   border-top-left-radius: 20px;
   border-right: 3px solid ${colors.DARK};
   border-left: 3px solid ${colors.DARK};
-  padding: 10px 20px;
+  padding: 0 20px;
+  @media ${devices.TABLET} {
+    border: none;
+    border-radius: 0;
+    height: 48px;
+    padding: 0 10px;
+  }
 `
 
 export const StyledButtonsArea = styled.div`

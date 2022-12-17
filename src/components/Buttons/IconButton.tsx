@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { colors, heights } from '../../constants/theme'
 import React from 'react'
+import { devices } from '../../constants/media-queries'
 enum ButtonTypes {
   PRIMARY = 'PRIMARY',
   SECONDARY = 'SECONDARY',
@@ -58,6 +59,10 @@ const StyledButton = styled.button<{
     width: 16px;
     object-fit: contain;
     fill: ${({ btnType }) => getIconColor(btnType)};
+  }
+  @media ${devices.TABLET} {
+    height: ${heights.BTN_MOBILE};
+    font-size: 14px;
   }
 `
 type ButtonProps = {

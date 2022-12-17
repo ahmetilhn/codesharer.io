@@ -13,6 +13,6 @@ export const colors = {
   YELLOW: '#f1fa8c',
 }
 export const heights = {
-  BTN_MOBILE: '340px',
+  BTN_MOBILE: '30px',
   BTN_DESKTOP: '40px',
 }

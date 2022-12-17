@@ -1,18 +1,28 @@
 import styled from 'styled-components'
-import { COLORS } from '../../../constants/theme'
+import { colors } from '../../../constants/theme'
 
 export const StyledWrapper = styled.header`
   width: 100%;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   position: relative;
-  transform: translateY(38px);
-  height: 200px;
+  height: 64px;
   background-color: #fff;
-  border-top: 1px solid ${COLORS.DARK};
+  border-top: 3px solid ${colors.DARK};
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
-  border-right: 1px solid ${COLORS.DARK};
-  border-left: 1px solid ${COLORS.DARK};
+  border-right: 3px solid ${colors.DARK};
+  border-left: 3px solid ${colors.DARK};
+  padding: 10px 20px;
+`
+
+export const StyledButtonsArea = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  button {
+    margin-left: 10px;
+  }
 `

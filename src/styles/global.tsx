@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components'
-import { COLORS } from '../constants/theme'
 export const GlobalStyle = createGlobalStyle`
     body{
         margin: 0;

@@ -2,7 +2,8 @@ import styled from 'styled-components'
 export const CodeMirrorStyles = {
   width: '100%',
   height: '100%',
-  borderRadius: '40px',
+  borderBottomLeftRadius: '20px',
+  borderBottomRightRadius: '20px',
   overflow: 'hidden',
 }
 

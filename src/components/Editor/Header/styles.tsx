@@ -26,3 +26,9 @@ export const StyledButtonsArea = styled.div`
     margin-left: 10px;
   }
 `
+export const StyledLogoAndTitle = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+`

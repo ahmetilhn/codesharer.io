@@ -4,7 +4,7 @@ import { StyledWrapper } from './styles'
 
 const Editor: React.FC = () => {
   return (
-    <StyledWrapper>
+    <StyledWrapper id='editor'>
       <Header />
       <CodeEditor />
     </StyledWrapper>

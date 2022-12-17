@@ -10,9 +10,8 @@ root.render(
   <React.StrictMode>
     <Toaster
       toastOptions={{
-        // Define default options
-        className: '',
-        duration: 5000,
+        position: 'top-center',
+        duration: 2000,
         style: {
           background: colors.DARK,
           color: colors.GREEN,

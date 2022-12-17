@@ -11,6 +11,7 @@ const CodeEditor: React.FC = () => {
       <CodeMirror
         value={jsVal}
         maxHeight='90vh'
+        minHeight='90vh'
         style={CodeMirrorStyles}
         theme={dracula}
         extensions={[javascript({ jsx: true })]}

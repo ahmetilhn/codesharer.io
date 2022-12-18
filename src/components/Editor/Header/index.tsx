@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import Logo from '../../Icons/Logo'
 import { StyledButtonsArea, StyledLogoAndTitle, StyledWrapper } from './styles'
 import IconButton from '../../Buttons/IconButton'
@@ -11,9 +12,8 @@ import DownloadIcon from '../../Icons/DownloadIcon'
 import { downloadFile } from '../../../utils/file-downloader'
 import { editorStore } from '../../../store'
 const Header: React.FC = () => {
-  const fileName = editorStore((state) => state.fileName)
+  const { file_name, code, language } = editorStore((state) => state.workspace)
   const setFileName = editorStore((state) => state.setFileName)
-  const code = editorStore((state) => state.code)
   const copyHandler = () => {
     toast.success('Copied to clipboard!')
   }
@@ -29,18 +29,18 @@ const Header: React.FC = () => {
     }
   }
   const downloadHandler = () => {
-    const isDownloaded = downloadFile(fileName, code)
+    const isDownloaded = downloadFile(file_name + '.' + language.extension, code)
     if (!isDownloaded) {
       toast.error('Download is not supported!')
     }
-    toast.success(`${fileName} is downloaded!`)
+    toast.success(`${file_name} is downloaded!`)
   }
   return (
     <StyledWrapper>
       <StyledLogoAndTitle>
         <Logo />
         <Input
-          value={fileName}
+          value={file_name}
           onChange={(e) => {
             setFileName(e.target.value)
           }}

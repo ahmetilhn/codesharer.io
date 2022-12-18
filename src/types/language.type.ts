@@ -1,7 +1,7 @@
 type LanguageType = {
   name: string
   value: string
-  extensions: string
+  extension: string
 }
 
 export default LanguageType

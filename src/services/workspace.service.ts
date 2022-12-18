@@ -2,10 +2,10 @@ import axiosInstance from '../api/axios-instance'
 import IWorkspace from '../types/workspace.interface'
 
 class WorkspaceService {
-  public async getWorkspace(): Promise<Array<IWorkspace>> {
+  public async getWorkspace(id: string): Promise<IWorkspace> {
     try {
-      const workspaces: Array<IWorkspace> = await axiosInstance.get('/workspaces')
-      return workspaces
+      const workspace: IWorkspace = await axiosInstance.get(`/workspaces/${id}`)
+      return workspace
     } catch (error) {
       throw new Error(error as string)
     }

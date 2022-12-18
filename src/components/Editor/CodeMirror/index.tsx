@@ -5,7 +5,7 @@ import { dracula } from '@uiw/codemirror-theme-dracula'
 import { StyledProvider } from './styles'
 import { editorStore } from '../../../store'
 const CodeEditor: React.FC = () => {
-  const code = editorStore((state) => state.code)
+  const { code } = editorStore((state) => state.workspace)
   const setCode = editorStore((state) => state.setCode)
   return (
     <StyledProvider>

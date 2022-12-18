@@ -1,16 +1,39 @@
 import create from 'zustand'
-import { jsDummy } from '../data/dummy-code'
+import IWorkspace from '../types/workspace.interface'
 type StoreType = {
-  code: string
-  fileName: string
-  setCode: (code: string) => void
+  workspace: IWorkspace
+  setWorkspace: (workspace: IWorkspace) => void
   setFileName: (fileName: string) => void
+  setCode: (code: string) => void
+}
+const initialState = {
+  workspace: {
+    code: '',
+    // eslint-disable-next-line camelcase
+    file_name: '',
+    language: {
+      name: '',
+      value: '',
+      extension: '',
+    },
+  } as IWorkspace,
 }
 const store = create<StoreType>((set) => ({
-  code: jsDummy.code,
-  fileName: jsDummy.fileName,
-  setCode: (code: string) => set({ code }),
-  setFileName: (fileName: string) => set({ fileName }),
+  ...initialState,
+  setWorkspace: (workspace: IWorkspace) => set({ workspace }),
+  setFileName: (fileName: string) => {
+    set((state) => {
+      // eslint-disable-next-line camelcase
+      state.workspace.file_name = fileName
+      return state
+    })
+  },
+  setCode: (code: string) => {
+    set((state) => {
+      state.workspace.code = code
+      return state
+    })
+  },
 }))
 
 export default store

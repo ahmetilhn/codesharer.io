@@ -4,7 +4,7 @@ const resInterceptor = (res: AxiosResponse) => {
   if (res.status >= 400 && res.status <= 599) {
     throw new Error('Client or server error')
   }
-  return res
+  return res.data
 }
 
 const errHandler = (err: AxiosError) => {

@@ -7,3 +7,5 @@ const axiosInstance: AxiosInstance = axios.create({
   },
 })
 setupInterceptors(axiosInstance)
+
+export default axiosInstance

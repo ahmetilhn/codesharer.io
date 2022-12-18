@@ -1,7 +1,7 @@
 import { setupInterceptors } from './axios-interceptors'
 import axios, { AxiosInstance } from 'axios'
 const axiosInstance: AxiosInstance = axios.create({
-  baseURL: 'http://localhost:8000',
+  baseURL: process.env.REACT_APP_API_URL,
   headers: {
     'Content-Type': 'application/json',
   },

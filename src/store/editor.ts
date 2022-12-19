@@ -16,6 +16,8 @@ const initialState = {
       value: '',
       extension: '',
     },
+    // eslint-disable-next-line camelcase
+    view_count: 0,
   } as IWorkspace,
 }
 const store = create<StoreType>((set) => ({

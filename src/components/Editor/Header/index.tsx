@@ -2,7 +2,7 @@
 import Logo from '../../Icons/Logo'
 import { StyledButtonsArea, StyledLogoAndTitle, StyledWrapper } from './styles'
 import IconButton from '../../Buttons/IconButton'
-import UserIcon from '../../Icons/UserIcon'
+import EyeIcon from '../../Icons/EyeIcon'
 import CopyIcon from '../../Icons/CopyIcon'
 import { toast } from 'react-hot-toast'
 import FullscreenIcon from '../../Icons/FullscreenIcon'
@@ -16,12 +16,12 @@ import { useParams } from 'react-router-dom'
 let fetchTimeout: ReturnType<typeof setTimeout>
 const Header: React.FC = () => {
   const { id } = useParams()
-  const { file_name, code, language } = editorStore((state) => state.workspace)
+  const { file_name, code, language, view_count } = editorStore((state) => state.workspace)
   const setFileName = editorStore((state) => state.setFileName)
   const copyHandler = () => {
     toast.success('Copied to clipboard!')
   }
-  const userHandler = () => {
+  const eyeHandler = () => {
     toast('2 people are looking at these codes right now')
   }
   const fullscreenHandler = () => {
@@ -75,8 +75,8 @@ const Header: React.FC = () => {
         />
       </StyledLogoAndTitle>
       <StyledButtonsArea>
-        <IconButton btnType='PRIMARY' onClick={userHandler}>
-          <UserIcon /> <span className='text'>2</span>
+        <IconButton btnType='PRIMARY' onClick={eyeHandler}>
+          <EyeIcon /> <span className='text'>{view_count}</span>
         </IconButton>
         <IconButton btnType='PRIMARY' onClick={copyHandler}>
           <CopyIcon />

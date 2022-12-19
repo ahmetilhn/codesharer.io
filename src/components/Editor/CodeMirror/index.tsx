@@ -32,6 +32,7 @@ const CodeEditor: React.FC = () => {
   }
 
   const codeChangeHandler = (val: string) => {
+    if (val === code) return
     clearTimeout(fetchTimeout)
     setCode(val)
     fetchTimeout = setTimeout(async () => {

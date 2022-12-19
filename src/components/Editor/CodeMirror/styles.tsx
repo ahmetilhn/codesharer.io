@@ -5,7 +5,7 @@ export const StyledProvider = styled.div`
   .cm-theme {
     background-color: #f5f5f5;
     width: 100%;
-    height: calc(100vh - 64px);
+    height: calc(100vh - 84px);
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     overflow: hidden;

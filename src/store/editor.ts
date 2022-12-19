@@ -24,14 +24,12 @@ const store = create<StoreType>((set) => ({
   setFileName: (fileName: string) => {
     set((state) => {
       // eslint-disable-next-line camelcase
-      state.workspace.file_name = fileName
-      return state
+      return { ...state, workspace: { ...state.workspace, file_name: fileName } }
     })
   },
   setCode: (code: string) => {
     set((state) => {
-      state.workspace.code = code
-      return state
+      return { ...state, workspace: { ...state.workspace, code } }
     })
   },
 }))

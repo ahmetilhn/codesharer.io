@@ -10,6 +10,17 @@ class WorkspaceService {
       throw new Error(error as string)
     }
   }
+  public async updateWorkspace<T>(payload: T & { id: string }): Promise<IWorkspace> {
+    try {
+      const updatedWorkspace: IWorkspace = await axiosInstance.put(
+        `/workspaces/${payload.id}`,
+        payload,
+      )
+      return updatedWorkspace
+    } catch (error) {
+      throw new Error(error as string)
+    }
+  }
 }
 
 export default new WorkspaceService()

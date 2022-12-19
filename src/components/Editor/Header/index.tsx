@@ -11,7 +11,11 @@ import Input from '../../Input'
 import DownloadIcon from '../../Icons/DownloadIcon'
 import { downloadFile } from '../../../utils/file-downloader'
 import { editorStore } from '../../../store'
+import workspaceService from '../../../services/workspace.service'
+import { useParams } from 'react-router-dom'
+let fetchTimeout: ReturnType<typeof setTimeout>
 const Header: React.FC = () => {
+  const { id } = useParams()
   const { file_name, code, language } = editorStore((state) => state.workspace)
   const setFileName = editorStore((state) => state.setFileName)
   const copyHandler = () => {
@@ -35,15 +39,38 @@ const Header: React.FC = () => {
     }
     toast.success(`${file_name} is downloaded!`)
   }
+  const updateFileName = async (name: string) => {
+    if (!id) return
+    type Payload = {
+      id: string
+      file_name: string
+    }
+    try {
+      const res = await workspaceService.updateWorkspace<Payload>({
+        id,
+        file_name: name,
+      })
+      if (res) {
+        toast.success('File name updated!')
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }
+  const fileNameChangeHandler = async (name: string) => {
+    clearTimeout(fetchTimeout)
+    setFileName(name)
+    fetchTimeout = setTimeout(async () => {
+      await updateFileName(name)
+    }, 2000)
+  }
   return (
     <StyledWrapper>
       <StyledLogoAndTitle>
         <Logo />
         <Input
           value={file_name}
-          onChange={(e) => {
-            setFileName(e.target.value)
-          }}
+          onChange={(e) => fileNameChangeHandler(e.target.value)}
           customStyle='margin-left: 10px; border:none!important; font-size: 24px; font-weight: 700; color: inherit;'
         />
       </StyledLogoAndTitle>

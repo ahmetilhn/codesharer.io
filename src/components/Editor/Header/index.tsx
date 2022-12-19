@@ -19,6 +19,12 @@ const Header: React.FC = () => {
   const { file_name, code, language, view_count } = editorStore((state) => state.workspace)
   const setFileName = editorStore((state) => state.setFileName)
   const copyHandler = () => {
+    const tempInput = document.createElement('input')
+    tempInput.value = code
+    document.body.appendChild(tempInput)
+    tempInput.select()
+    document.execCommand('copy')
+    document.body.removeChild(tempInput)
     toast.success('Copied to clipboard!')
   }
   const eyeHandler = () => {

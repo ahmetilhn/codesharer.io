@@ -6,25 +6,27 @@ import EyeIcon from '../../Icons/EyeIcon'
 import CopyIcon from '../../Icons/CopyIcon'
 import { toast } from 'react-hot-toast'
 import FullscreenIcon from '../../Icons/FullscreenIcon'
-import { elementToFullscreen } from '../../../utils/element-fullscreen'
+import { closeFullScreen, elementToFullscreen } from '../../../utils/full-screen.util'
 import Input from '../../Input'
 import DownloadIcon from '../../Icons/DownloadIcon'
 import { downloadFile } from '../../../utils/file-downloader'
 import { editorStore } from '../../../store'
 import workspaceService from '../../../services/workspace.service'
 import { useParams } from 'react-router-dom'
+import { copyToClipboard } from '../../../utils/copy.util'
+import { useState } from 'react'
 let fetchTimeout: ReturnType<typeof setTimeout>
 const Header: React.FC = () => {
+  const [isFullScreen, setIsFullScreen] = useState(false)
   const { id } = useParams()
   const { file_name, code, language, view_count } = editorStore((state) => state.workspace)
   const setFileName = editorStore((state) => state.setFileName)
-  const copyHandler = () => {
-    const tempInput = document.createElement('input')
-    tempInput.value = code
-    document.body.appendChild(tempInput)
-    tempInput.select()
-    document.execCommand('copy')
-    document.body.removeChild(tempInput)
+  const copyHandler = async () => {
+    const isCopied = await copyToClipboard(code)
+    if (!isCopied) {
+      toast.error('Copy not supported!')
+      return
+    }
     toast.success('Copied to clipboard!')
   }
   const eyeHandler = () => {
@@ -33,9 +35,12 @@ const Header: React.FC = () => {
   const fullscreenHandler = () => {
     const elem = document.getElementById('editor')
     if (!elem) return
-    const isFullscreen = elementToFullscreen(elem)
-    if (!isFullscreen) {
-      toast.error('Fullscreen is not supported!')
+    if (!isFullScreen) {
+      elementToFullscreen(elem)
+      setIsFullScreen(true)
+    } else {
+      setIsFullScreen(false)
+      closeFullScreen()
     }
   }
   const downloadHandler = () => {
